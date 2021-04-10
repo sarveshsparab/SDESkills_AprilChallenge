@@ -2,6 +2,16 @@ package com.sarveshparab;
 
 import static com.sarveshparab.Game.BoardPlayerEnum.*;
 
+/**
+ * Problem: Tic-Tac-Toe I
+ *   -- https://beta.sdeskills.com/30day-challenge/day1
+ *
+ * Author Details:
+ *   -- Sarvesh Parab
+ *   -- sarveshsparab@gmail.com
+ *   -- http://www.sarveshparab.com/
+ *   -- https://www.linkedin.com/in/sarveshsparab/
+ */
 public class Game {
 
     private static final int DEFAULT_BOARD_SIZE = 3;

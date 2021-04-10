@@ -5,6 +5,16 @@ import java.util.Random;
 import static com.sarveshparab.Game.BoardPlayerEnum.O;
 import static com.sarveshparab.Game.BoardPlayerEnum.X;
 
+/**
+ * Problem: Tic-Tac-Toe I
+ *   -- https://beta.sdeskills.com/30day-challenge/day1
+ *
+ * Author Details:
+ *   -- Sarvesh Parab
+ *   -- sarveshsparab@gmail.com
+ *   -- http://www.sarveshparab.com/
+ *   -- https://www.linkedin.com/in/sarveshsparab/
+ */
 public class Main {
 
     private static final Random rand = new Random();
