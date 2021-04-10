@@ -1,4 +1,4 @@
-# SDE Skills - April 30 Day Challenge
+# SDE Skills - April 2021 30-Day Challenge
 
 This repository tracks the solutions for the [challenge](https://beta.sdeskills.com/30day-challenge/)
 
