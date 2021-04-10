@@ -1,7 +1,5 @@
 package com.sarveshparab;
 
-import static com.sarveshparab.Game.BoardPlayerEnum.*;
-
 /**
  * Problem: Tic-Tac-Toe I
  *   -- https://beta.sdeskills.com/30day-challenge/day1
@@ -32,17 +30,17 @@ public class Game {
     public Game(int boardSize) {
         this.boardSize = boardSize;
 
-        this.equiDiagonal = EMPTY.getVal();
-        this.nonEquiDiagonal = EMPTY.getVal();
+        this.equiDiagonal = BoardPlayerEnum.EMPTY.getVal();
+        this.nonEquiDiagonal = BoardPlayerEnum.EMPTY.getVal();
 
         this.verticalSum = new int[this.boardSize];
         this.horizontalSum = new int[this.boardSize];
         this.boardState = new BoardPlayerEnum[this.boardSize][this.boardSize];
         for (int i=0; i<this.boardSize; i++) {
-            this.verticalSum[i] = EMPTY.getVal();
-            this.horizontalSum[i] = EMPTY.getVal();
+            this.verticalSum[i] = BoardPlayerEnum.EMPTY.getVal();
+            this.horizontalSum[i] = BoardPlayerEnum.EMPTY.getVal();
             for (int j = 0; j < this.boardSize; j++) {
-                this.boardState[i][j] = EMPTY;
+                this.boardState[i][j] = BoardPlayerEnum.EMPTY;
             }
         }
 
@@ -51,17 +49,17 @@ public class Game {
     }
 
     public String play(char player, int x, int y){
-        if(player == X.getSymbol()){
+        if(player == BoardPlayerEnum.X.getSymbol()){
             if((this.xMoves == this.oMoves) && (this.xMoves + this.oMoves != this.boardSize * this.boardSize)){
-                if(this.boardState[x][y] == EMPTY){
-                    this.boardState[x][y] = X;
+                if(this.boardState[x][y] == BoardPlayerEnum.EMPTY){
+                    this.boardState[x][y] = BoardPlayerEnum.X;
                     this.xMoves++;
-                    this.horizontalSum[x] += X.getVal();
-                    this.verticalSum[y] += X.getVal();
+                    this.horizontalSum[x] += BoardPlayerEnum.X.getVal();
+                    this.verticalSum[y] += BoardPlayerEnum.X.getVal();
                     if(x == y)
-                        this.equiDiagonal += X.getVal();
+                        this.equiDiagonal += BoardPlayerEnum.X.getVal();
                     if(this.boardSize - 1 == x + y)
-                        this.nonEquiDiagonal += X.getVal();
+                        this.nonEquiDiagonal += BoardPlayerEnum.X.getVal();
 
                     return "OK";
                 } else {
@@ -70,17 +68,17 @@ public class Game {
             } else {
                 return "BAD";
             }
-        } else if(player == O.getSymbol()){
+        } else if(player == BoardPlayerEnum.O.getSymbol()){
             if((this.oMoves == this.xMoves - 1) && (this.xMoves + this.oMoves != this.boardSize * this.boardSize)){
-                if(this.boardState[x][y] == EMPTY){
-                    this.boardState[x][y] = O;
+                if(this.boardState[x][y] == BoardPlayerEnum.EMPTY){
+                    this.boardState[x][y] = BoardPlayerEnum.O;
                     this.oMoves++;
-                    this.horizontalSum[x] += O.getVal();
-                    this.verticalSum[y] += O.getVal();
+                    this.horizontalSum[x] += BoardPlayerEnum.O.getVal();
+                    this.verticalSum[y] += BoardPlayerEnum.O.getVal();
                     if(x == y)
-                        this.equiDiagonal += O.getVal();
+                        this.equiDiagonal += BoardPlayerEnum.O.getVal();
                     if(this.boardSize - 1 == x + y)
-                        this.nonEquiDiagonal += O.getVal();
+                        this.nonEquiDiagonal += BoardPlayerEnum.O.getVal();
 
                     return "OK";
                 } else {

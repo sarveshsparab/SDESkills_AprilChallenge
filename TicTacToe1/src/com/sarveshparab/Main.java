@@ -2,9 +2,6 @@ package com.sarveshparab;
 
 import java.util.Random;
 
-import static com.sarveshparab.Game.BoardPlayerEnum.O;
-import static com.sarveshparab.Game.BoardPlayerEnum.X;
-
 /**
  * Problem: Tic-Tac-Toe I
  *   -- https://beta.sdeskills.com/30day-challenge/day1
@@ -29,7 +26,7 @@ public class Main {
 
         while (moves < maxMoves){
             if(moves % 2 == 0){
-                if(ticTacToe.play(X.getSymbol(), rand.nextInt(ticTacToe.getBoardSize()), rand.nextInt(ticTacToe.getBoardSize())).equals("OK")){
+                if(ticTacToe.play(Game.BoardPlayerEnum.X.getSymbol(), rand.nextInt(ticTacToe.getBoardSize()), rand.nextInt(ticTacToe.getBoardSize())).equals("OK")){
                     if(ticTacToe.checkWin().equals("X WON")){
                         moves = maxMoves;
                     }
@@ -37,7 +34,7 @@ public class Main {
                     ticTacToe.showBoard();
                 }
             } else {
-                if(ticTacToe.play(O.getSymbol(), rand.nextInt(ticTacToe.getBoardSize()), rand.nextInt(ticTacToe.getBoardSize())).equals("OK")){
+                if(ticTacToe.play(Game.BoardPlayerEnum.O.getSymbol(), rand.nextInt(ticTacToe.getBoardSize()), rand.nextInt(ticTacToe.getBoardSize())).equals("OK")){
                     if(ticTacToe.checkWin().equals("O WON")){
                         moves = maxMoves;
                     }
