@@ -11,5 +11,6 @@ This repository tracks the solutions for the [challenge](https://beta.sdeskills.
 |April 5|Morse Code II|[Problem Statement](https://beta.sdeskills.com/30day-challenge/day5)|[Solution](MorseCode/src/com/sarveshparab/Main.java)|[Link](https://replit.com/join/uarafwjj-sarveshsparab)|
 |April 6|N Queens Puzzle|[Problem Statement](https://beta.sdeskills.com/30day-challenge/day6)|[Solution](NQueens/src/com/sarveshparab/Main.java)|[Link](https://replit.com/join/ebvnevcj-sarveshsparab)|
 |April 7|15 Puzzle|[Problem Statement](https://beta.sdeskills.com/30day-challenge/day7)|[Solution](SlidingPuzzle/src/com/sarveshparab/Main.java)|[Link](https://replit.com/join/axsllvpx-sarveshsparab)|
+|April 8|Knight's Tour|[Problem Statement](https://beta.sdeskills.com/30day-challenge/day8)|[Solution](KnightsTour/src/com/sarveshparab/Main.java)|[Link](https://replit.com/join/ioaapbdw-sarveshsparab)|
 ---
 _Please email your questions or comments to [Sarvesh Parab](http://www.sarveshparab.com/)_
