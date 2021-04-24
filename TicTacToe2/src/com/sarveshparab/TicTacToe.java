@@ -60,7 +60,7 @@ public class TicTacToe {
     public void start() {
         while(getGameState() == GameStateEnum.IN_PLAY){
             if(this.compPlayer == BoardPlayerEnum.X){
-                int compPos = this.compStrategy.equalsIgnoreCase("S") ? getSmartPosition() : getRandomPosition();
+                int compPos = this.compStrategy.equalsIgnoreCase("S") ? getSmartPositionOptimized() : getRandomPosition();
                 makeMove(this.compPlayer, compPos/this.boardSize, compPos%this.boardSize);
                 if (getGameState() != GameStateEnum.IN_PLAY){
                     break;
@@ -73,7 +73,7 @@ public class TicTacToe {
                 if (getGameState() != GameStateEnum.IN_PLAY){
                     break;
                 }
-                int compPos = this.compStrategy.equalsIgnoreCase("S") ? getSmartPosition() : getRandomPosition();
+                int compPos = this.compStrategy.equalsIgnoreCase("S") ? getSmartPositionOptimized() : getRandomPosition();
                 makeMove(this.compPlayer, compPos/this.boardSize, compPos%this.boardSize);
             }
         }
@@ -125,6 +125,11 @@ public class TicTacToe {
         return pos;
     }
 
+    private int getSmartPositionOptimized() {
+        int[] ans = minimaxOptimized(0, this.compPlayer);
+        return ans[1] * this.boardSize + ans[2];
+    }
+
     private int minimax(int depth, BoardPlayerEnum player){
         GameStateEnum gameState = getGameState();
         if (Math.abs(gameState.getVal()) == 1){
@@ -164,6 +169,61 @@ public class TicTacToe {
             }
         }
         return val;
+    }
+
+    private int[] minimaxOptimized(int depth, BoardPlayerEnum player){
+        GameStateEnum gameState = getGameState();
+        if (Math.abs(gameState.getVal()) == 1){
+            return new int[]{gameState.getVal(), -1, -1};
+        }
+
+        if (gameState == GameStateEnum.DRAW){
+            return new int[]{0, -1, -1};
+        }
+
+        int val, x = -1, y = -1;
+        if (player == BoardPlayerEnum.X){
+            val = Integer.MIN_VALUE;
+
+            for (int i = 0; i < this.boardSize ; i++){
+                for (int j = 0; j < this.boardSize ; j++){
+                    if (this.boardState[i][j] == BoardPlayerEnum.EMPTY){
+                        this.boardState[i][j] = BoardPlayerEnum.X;
+                        makeMove(BoardPlayerEnum.X, i, j);
+
+                        int moveVal = minimax(depth + 1, BoardPlayerEnum.O);
+                        if (moveVal > val){
+                            val = moveVal;
+                            x = i;
+                            y = j;
+                        }
+
+                        undoMove(BoardPlayerEnum.X, i, j);
+                    }
+                }
+            }
+
+        } else {
+            val = Integer.MAX_VALUE;
+
+            for (int i = 0; i < this.boardSize ; i++){
+                for (int j = 0; j < this.boardSize ; j++){
+                    if (this.boardState[i][j] == BoardPlayerEnum.EMPTY){
+                        makeMove(BoardPlayerEnum.O, i, j);
+
+                        int moveVal = minimax(depth + 1, BoardPlayerEnum.X);
+                        if (moveVal < val){
+                            val = moveVal;
+                            x = i;
+                            y = j;
+                        }
+
+                        undoMove(BoardPlayerEnum.O, i, j);
+                    }
+                }
+            }
+        }
+        return new int[]{val, x, y};
     }
 
     private void makeMove(BoardPlayerEnum player, int row, int col) {
