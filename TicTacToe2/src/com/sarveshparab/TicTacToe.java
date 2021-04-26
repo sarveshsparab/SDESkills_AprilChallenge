@@ -191,9 +191,9 @@ public class TicTacToe {
                         this.boardState[i][j] = BoardPlayerEnum.X;
                         makeMove(BoardPlayerEnum.X, i, j);
 
-                        int moveVal = minimax(depth + 1, BoardPlayerEnum.O);
-                        if (moveVal > val){
-                            val = moveVal;
+                        int[] moveValArr = minimaxOptimized(depth + 1, BoardPlayerEnum.O);
+                        if (moveValArr[0] > val){
+                            val = moveValArr[0];
                             x = i;
                             y = j;
                         }
@@ -211,9 +211,9 @@ public class TicTacToe {
                     if (this.boardState[i][j] == BoardPlayerEnum.EMPTY){
                         makeMove(BoardPlayerEnum.O, i, j);
 
-                        int moveVal = minimax(depth + 1, BoardPlayerEnum.X);
-                        if (moveVal < val){
-                            val = moveVal;
+                        int[] moveValArr = minimaxOptimized(depth + 1, BoardPlayerEnum.X);
+                        if (moveValArr[0] < val){
+                            val = moveValArr[0];
                             x = i;
                             y = j;
                         }
